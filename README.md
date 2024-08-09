@@ -48,7 +48,8 @@ Clone repositori ini: git clone https://github.com/n4days/SIMKampus.git
 
 ## Screen
 
-Berikut adalah tampilan Splashscreen tampil selama 5 detik:&nbsp;
+
+<p>Berikut adalah tampilan Splashscreen tampil selama 5 detik:</p>
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/1.jpg" alt="Screenshot Proyek" width="150">
 
 Berikut adalah tampilan Halaman Login:&nbsp;
