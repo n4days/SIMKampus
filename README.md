@@ -48,25 +48,25 @@ Clone repositori ini: git clone https://github.com/n4days/SIMKampus.git
 
 ## Screen
 
-Berikut adalah tampilan Splashscreen tampil selama 5 detik:
+Berikut adalah tampilan Splashscreen tampil selama 5 detik:&nbsp;
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/1.jpg" alt="Screenshot Proyek" width="150">
 
-Berikut adalah tampilan Halaman Login:
+Berikut adalah tampilan Halaman Login:&nbsp;
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/2.jpg" alt="Screenshot Proyek" width="150">
 
-Berikut adalah tampilan Halaman Register:
+Berikut adalah tampilan Halaman Register:&nbsp;
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/3.jpg" alt="Screenshot Proyek" width="150">
 
-Berikut adalah tampilan Splashscreen/Loadingscreen setelah Halaman Login:
+Berikut adalah tampilan Splashscreen/Loadingscreen setelah Halaman Login:&nbsp;
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/4.jpg" alt="Screenshot Proyek" width="150">
 
-Berikut adalah tampilan Dashboard:
+Berikut adalah tampilan Dashboard:&nbsp;
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/5.jpg" alt="Screenshot Proyek" width="150">
 
-Berikut adalah tampilan Data Mahasiswa:
+Berikut adalah tampilan Data Mahasiswa:&nbsp;
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/6.jpg" alt="Screenshot Proyek" width="150">
 
-Berikut adalah tampilan Input Data Mahasiswa:
+Berikut adalah tampilan Input Data Mahasiswa:&nbsp;
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/7.jpg" alt="Screenshot Proyek" width="150">
 
 
