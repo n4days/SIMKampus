@@ -83,7 +83,7 @@ public class DataMahasiswa extends AppCompatActivity {
                         switch (which){
                             case 0:
                                 Intent intent = new Intent(DataMahasiswa.this, Mahasiswa.class);
-                                intent.putExtra("data_id", dataList.get(position).getId());
+                                intent.putExtra("view_data_id", dataList.get(position).getId());
                                 startActivity(intent);
                                 break;
                             case 1:

@@ -41,6 +41,19 @@ public class Mahasiswa extends AppCompatActivity {
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        if (getIntent().hasExtra("view_data_id")) {
+            btnSave.setVisibility(View.GONE);
+            int id = getIntent().getIntExtra("view_data_id", -1);
+            infoMahasiswa = dbHelper.getData(id);
+            if (infoMahasiswa != null) {
+                etNomor.setText(infoMahasiswa.getNIM());
+                etName.setText(infoMahasiswa.getNAMA());
+                etDate.setText(infoMahasiswa.getDOB());
+                etGender.setText(infoMahasiswa.getGENDER());
+                etAddress.setText(infoMahasiswa.getADDRESS());
+            }
+        }
+
         if (getIntent().hasExtra("data_id")) {
             btnSave.setText("Edit");
             int id = getIntent().getIntExtra("data_id", -1);
