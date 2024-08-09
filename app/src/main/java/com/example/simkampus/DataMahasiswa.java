@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,13 +22,10 @@ import java.util.List;
 public class DataMahasiswa extends AppCompatActivity {
 
     ActionBar actionBar;
-
     private ListView listView;
-
     private TextView tvListView;
-
     private FloatingActionButton fab;
-
+    private EditText etSearch;
     private DatabaseHelper dbHelper;
     private List<InfoMahasiswa> dataList;
     private ArrayAdapter<String> adapter;
@@ -38,6 +38,7 @@ public class DataMahasiswa extends AppCompatActivity {
 
         fab = findViewById(R.id.fab);
         listView = findViewById(R.id.listView);
+        etSearch = findViewById(R.id.etSearch);
         tvListView = findViewById(R.id.tvListView);
         dbHelper = new DatabaseHelper(this);
         dataList = new ArrayList<>();
@@ -52,6 +53,19 @@ public class DataMahasiswa extends AppCompatActivity {
                 Intent intent = new Intent(DataMahasiswa.this, Mahasiswa.class);
                 startActivity(intent);
             }
+        });
+
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i,
+                                          int i1, int i2) {}
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int
+                    i1, int i2) {
+                searchData(charSequence.toString());
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {}
         });
     }
 
@@ -68,10 +82,10 @@ public class DataMahasiswa extends AppCompatActivity {
 
     protected void onResume() {
         super.onResume();
-        loadNotes();
+        loadData();
     }
 
-    private void loadNotes() {
+    private void loadData() {
         dataList = dbHelper.getAllData();
         nimList.clear();
         for (InfoMahasiswa infoMahasiswa : dataList) {
@@ -85,5 +99,14 @@ public class DataMahasiswa extends AppCompatActivity {
         } else {
             tvListView.setText("No Data Mahasiswa");
         }
+    }
+
+    private void searchData(String keyword) {
+        dataList = dbHelper.searchData(keyword);
+        nimList.clear();
+        for (InfoMahasiswa infoMahasiswa : dataList) {
+            nimList.add(infoMahasiswa.getNIM()+ "\n" + infoMahasiswa.getNAMA());
+        }
+        adapter.notifyDataSetChanged();
     }
 }

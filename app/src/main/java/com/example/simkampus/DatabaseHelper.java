@@ -117,4 +117,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public List<InfoMahasiswa> searchData(String keyword) {
+        List<InfoMahasiswa> data = new ArrayList<>();
+        String searchQuery = "SELECT * FROM " + TABLE_NAME_2 + " WHERE " +
+                COLUMN_NAME + " LIKE ? OR " + COLUMN_NIM + " LIKE ? ORDER BY " +
+                COLUMN_ID + " DESC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(searchQuery, new String[]{"%" + keyword
+                + "%", "%" + keyword + "%"});
+        if (cursor.moveToFirst()) {
+            do {
+                InfoMahasiswa infoMahasiswa = new InfoMahasiswa();
+                infoMahasiswa.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
+                infoMahasiswa.setNIM(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NIM)));
+                infoMahasiswa.setNAMA(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)));
+                infoMahasiswa.setDOB(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DOB)));
+                infoMahasiswa.setGENDER(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)));
+                infoMahasiswa.setADDRESS(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS)));
+                data.add(infoMahasiswa);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return data;
+    }
+
 }
