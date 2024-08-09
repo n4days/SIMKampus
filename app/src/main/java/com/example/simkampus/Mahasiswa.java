@@ -41,6 +41,20 @@ public class Mahasiswa extends AppCompatActivity {
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        if (getIntent().hasExtra("data_id")) {
+            btnSave.setText("Edit");
+            int id = getIntent().getIntExtra("data_id", -1);
+            infoMahasiswa = dbHelper.getData(id);
+            if (infoMahasiswa != null) {
+                etNomor.setText(infoMahasiswa.getNIM());
+                etName.setText(infoMahasiswa.getNAMA());
+                etDate.setText(infoMahasiswa.getDOB());
+                etGender.setText(infoMahasiswa.getGENDER());
+                etAddress.setText(infoMahasiswa.getADDRESS());
+                isEdit = true;
+            }
+        }
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,10 +68,12 @@ public class Mahasiswa extends AppCompatActivity {
                     return;
                 }
                 if (isEdit) {
-//                    note.setTitle(title);
-//                    note.setContent(content);
-//                    note.setDate(date);
-//                    dbHelper.updateNote(note);
+                    infoMahasiswa.setNIM(nim);
+                    infoMahasiswa.setNAMA(name);
+                    infoMahasiswa.setDOB(date);
+                    infoMahasiswa.setGENDER(gender);
+                    infoMahasiswa.setADDRESS(address);
+                    dbHelper.updateNote(infoMahasiswa);
                 } else {
                     infoMahasiswa = new InfoMahasiswa();
                     infoMahasiswa.setNIM(nim);

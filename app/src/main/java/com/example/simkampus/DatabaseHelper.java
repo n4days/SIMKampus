@@ -148,4 +148,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public int updateNote(InfoMahasiswa data) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NIM, data.getNIM());
+        values.put(COLUMN_NAME, data.getNAMA());
+        values.put(COLUMN_DOB, data.getDOB());
+        values.put(COLUMN_GENDER, data.getGENDER());
+        values.put(COLUMN_ADDRESS, data.getADDRESS());
+        return db.update(TABLE_NAME_2, values, COLUMN_ID + " = ?",
+                new String[]{String.valueOf(data.getId())});
+    }
+
 }
