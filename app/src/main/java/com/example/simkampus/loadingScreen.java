@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 public class loadingScreen extends AppCompatActivity {
 
-    public static int SPLASH_TIMER = 5000;
+    public static int SPLASH_TIMER = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

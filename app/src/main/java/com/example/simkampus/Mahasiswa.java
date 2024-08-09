@@ -3,6 +3,7 @@ package com.example.simkampus;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -37,6 +39,8 @@ public class Mahasiswa extends AppCompatActivity {
         etAddress = findViewById(R.id.etAddress);
         btnSave = findViewById(R.id.btnSave);
         dbHelper = new DatabaseHelper(this);
+
+        etDate.setOnClickListener(v -> showDatePickerDialog());
 
         actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -109,5 +113,24 @@ public class Mahasiswa extends AppCompatActivity {
 
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+    private void showDatePickerDialog() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                Mahasiswa.this,
+                (view, selectedYear, selectedMonth, selectedDay) -> {
+                    // Format the selected date and set it to EditText
+                    String selectedDate = String.format("%02d-%02d-%d", selectedDay, selectedMonth + 1, selectedYear);
+                    etDate.setText(selectedDate);
+                },
+                day, month, year
+        );
+
+        datePickerDialog.show();
     }
 }
