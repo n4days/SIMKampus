@@ -44,9 +44,7 @@ Daftar fitur utama dari proyek Anda:
 
 Instruksi langkah demi langkah untuk menginstal proyek ini secara lokal. Contohnya:
 
-Clone repositori ini:
-   ```bash
-   git clone https://github.com/n4days/SIMKampus.git
+Clone repositori ini: git clone https://github.com/n4days/SIMKampus.git
 
 ## Screen
 
@@ -70,3 +68,5 @@ Berikut adalah tampilan Data Mahasiswa:
 
 Berikut adalah tampilan Input Data Mahasiswa:
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/7.jpg" alt="Screenshot Proyek" width="150">
+
+
