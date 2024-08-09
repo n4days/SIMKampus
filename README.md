@@ -69,4 +69,31 @@ Clone repositori ini: git clone https://github.com/n4days/SIMKampus.git
 <p>Berikut adalah tampilan Input Data Mahasiswa:</p>
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/7.jpg" alt="Screenshot Proyek" width="150">
 
+<p>Berikut adalah tampilan Data Mahasiswa setelah diinput Data Mahasiswa:</p>
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/8.jpg" alt="Screenshot Proyek" width="150">
 
+<p>Berikut adalah fitur search Mahasiswa:</p>
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/9.jpg" alt="Screenshot Proyek" width="150">
+
+<p>Berikut adalah fitur alertDialog:</p>
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/10.jpg" alt="Screenshot Proyek" width="150">
+
+<p>Berikut adalah tampilan Edit Data Mahasiswa:</p>
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/11.jpg" alt="Screenshot Proyek" width="150">
+
+<p>Berikut adalah tampilan Data Mahasiswa setelah diedit Data Mahasiswa:</p>
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/12.jpg" alt="Screenshot Proyek" width="150">
+
+<p>Berikut adalah tampilan Data Mahasiswa setelah dihapus Data Mahasiswa:</p>
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/13.jpg" alt="Screenshot Proyek" width="150">
+
+<p>Berikut adalah tampilan Tentang Aplikasi:</p>
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/14.jpg" alt="Screenshot Proyek" width="150">
+
+## Licensi
+
+Hak Cipta (c) 2024 M Irsyad Ramadhan (@n4days)
+
+## Kontak
+
+Instagram : n4days
