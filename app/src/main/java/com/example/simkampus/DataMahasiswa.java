@@ -92,8 +92,18 @@ public class DataMahasiswa extends AppCompatActivity {
                                 startActivity(intent2);
                                 break;
                             case 2:
-                                dbHelper.deleteData(dataList.get(position));
-                                loadData();
+                                new AlertDialog.Builder(DataMahasiswa.this)
+                                        .setTitle("Konfirmasi")
+                                        .setMessage("Apakah Anda yakin ingin menghapus data ini?")
+                                        .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dbHelper.deleteData(dataList.get(position));
+                                                loadData();
+                                            }
+                                        })
+                                        .setNegativeButton("Tidak", null)
+                                        .show();
                                 break;
                         }
                     }
