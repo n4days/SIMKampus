@@ -13,9 +13,13 @@
         android:theme="@style/Theme.SIMKampus"
         tools:targetApi="31">
         <activity
+            android:name=".aboutMe"
+            android:exported="false"
+            android:label="Tentang Aplikasi"/>
+        <activity
             android:name=".Mahasiswa"
             android:exported="false"
-            android:label="Data"/>
+            android:label="Data" />
         <activity
             android:name=".DataMahasiswa"
             android:exported="false"
