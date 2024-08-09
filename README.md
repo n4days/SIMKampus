@@ -1,1 +1,1 @@
-<img src="https://github.com/n4days/SIMKampus/blob/master/data/1.jpg" alt="Screenshot Proyek" width="300">
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/1.jpg" alt="Screenshot Proyek" width="150">
