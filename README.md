@@ -46,6 +46,9 @@ Instruksi langkah demi langkah untuk menginstal proyek ini secara lokal. Contohn
 
 Clone repositori ini: git clone https://github.com/n4days/SIMKampus.git
 
+Lalu open via Android Studio
+SDK 34
+
 ## Screen
 
 <p>Berikut adalah tampilan Splashscreen tampil selama 5 detik:</p>
