@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "User.db";
@@ -23,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ADDRESS = "ADDRESS";
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
     }
 
     public void onCreate(SQLiteDatabase db) {
@@ -71,6 +74,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long id = db.insert(TABLE_NAME_2, null, values);
         db.close();
         return id;
+    }
+
+    public InfoMahasiswa getData(long ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_NAME_2,
+                new String[]{COLUMN_ID, COLUMN_NIM, COLUMN_NAME, COLUMN_DOB, COLUMN_GENDER, COLUMN_ADDRESS},
+                COLUMN_ID + "=?",
+                new String[]{String.valueOf(ID)}, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+        InfoMahasiswa infoMahasiswa = new InfoMahasiswa(
+                cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NIM)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DOB)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
+                cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS)));
+        cursor.close();
+        return infoMahasiswa;
+    }
+
+    public List<InfoMahasiswa> getAllData() {
+        List<InfoMahasiswa> data = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_NAME_2 + " ORDER BY " +
+                COLUMN_ID + " DESC";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                InfoMahasiswa infoMahasiswa = new InfoMahasiswa();
+                infoMahasiswa.setId(cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)));
+                infoMahasiswa.setNIM(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NIM)));
+                infoMahasiswa.setNAMA(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)));
+                infoMahasiswa.setDOB(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DOB)));
+                infoMahasiswa.setGENDER(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)));
+                infoMahasiswa.setADDRESS(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_ADDRESS)));
+                data.add(infoMahasiswa);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return data;
     }
 
 }
