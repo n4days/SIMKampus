@@ -27,5 +27,13 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnInputData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dashboard.this, Mahasiswa.class);
+                startActivity(intent);
+            }
+        });
     }
 }

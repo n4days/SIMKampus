@@ -57,7 +57,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="144dp"
-        android:drawableLeft="@drawable/baseline_input_24"
+        android:drawableLeft="@drawable/baseline_info_24"
         android:drawableTint="#FFFFFF"
         android:padding="10dp"
         android:text="INFORMASI"
