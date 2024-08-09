@@ -1,13 +1,16 @@
 package com.example.simkampus;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -66,6 +69,38 @@ public class DataMahasiswa extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable editable) {}
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(DataMahasiswa.this);
+                builder.setTitle("Pilihan");
+
+                builder.setItems(new CharSequence[]{"Lihat Data","Update Data", "Hapus Data"}, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case 0:
+                                Intent intent = new Intent(DataMahasiswa.this, Mahasiswa.class);
+                                intent.putExtra("data_id", dataList.get(position).getId());
+                                startActivity(intent);
+                                break;
+                            case 1:
+                                Intent intent2 = new Intent(DataMahasiswa.this, Mahasiswa.class);
+                                intent2.putExtra("data_id", dataList.get(position).getId());
+                                startActivity(intent2);
+                                break;
+                            case 2:
+                                dbHelper.deleteData(dataList.get(position));
+                                loadData();
+                                break;
+                        }
+                    }
+                });
+
+                builder.create().show();
+            }
         });
     }
 

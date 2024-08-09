@@ -141,4 +141,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
+    public void deleteData(InfoMahasiswa data) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_NAME_2, COLUMN_ID + " = ?",
+                new String[]{String.valueOf(data.getId())});
+        db.close();
+    }
+
 }
