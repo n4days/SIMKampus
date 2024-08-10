@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +23,9 @@ public class Mahasiswa extends AppCompatActivity {
 
     ActionBar actionBar;
 
-    private EditText etNomor, etName, etDate, etGender, etAddress;
+    private RadioGroup etGender;
+    RadioButton rbMale, rbFemale;
+    private EditText etNomor, etName, etDate, etAddress;
     private Button btnSave;
 
     private TextView tvTitleScreen;
@@ -40,6 +44,8 @@ public class Mahasiswa extends AppCompatActivity {
         etName = findViewById(R.id.etName);
         etDate = findViewById(R.id.etDate);
         etGender = findViewById(R.id.etGender);
+        rbMale = findViewById(R.id.rbMale);
+        rbFemale = findViewById(R.id.rbFemale);
         etAddress = findViewById(R.id.etAddress);
         btnSave = findViewById(R.id.btnSave);
         dbHelper = new DatabaseHelper(this);
@@ -58,13 +64,15 @@ public class Mahasiswa extends AppCompatActivity {
                 etNomor.setText(infoMahasiswa.getNIM());
                 etName.setText(infoMahasiswa.getNAMA());
                 etDate.setText(infoMahasiswa.getDOB());
-                etGender.setText(infoMahasiswa.getGENDER());
+                setGenderSelection(infoMahasiswa.getGENDER());
                 etAddress.setText(infoMahasiswa.getADDRESS());
 
                 etNomor.setEnabled(false);
                 etName.setEnabled(false);
                 etDate.setEnabled(false);
                 etGender.setEnabled(false);
+                rbMale.setEnabled(false);
+                rbFemale.setEnabled(false);
                 etAddress.setEnabled(false);
             }
         }
@@ -78,7 +86,7 @@ public class Mahasiswa extends AppCompatActivity {
                 etNomor.setText(infoMahasiswa.getNIM());
                 etName.setText(infoMahasiswa.getNAMA());
                 etDate.setText(infoMahasiswa.getDOB());
-                etGender.setText(infoMahasiswa.getGENDER());
+                setGenderSelection(infoMahasiswa.getGENDER());
                 etAddress.setText(infoMahasiswa.getADDRESS());
                 isEdit = true;
             }
@@ -90,7 +98,7 @@ public class Mahasiswa extends AppCompatActivity {
                 String nim = etNomor.getText().toString().trim();
                 String name = etName.getText().toString().trim();
                 String date = etDate.getText().toString().trim();
-                String gender = etGender.getText().toString().trim();
+                String gender = getSelectedGender();
                 String address = etAddress.getText().toString().trim();
                 if (nim.isEmpty() || nim.isEmpty()) {
                     Toast.makeText(Mahasiswa.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
@@ -152,7 +160,6 @@ public class Mahasiswa extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 Mahasiswa.this,
                 (view, selectedYear, selectedMonth, selectedDay) -> {
-                    // Format the selected date and set it to EditText
                     String selectedDate = String.format("%02d-%02d-%d", selectedDay, selectedMonth + 1, selectedYear);
                     etDate.setText(selectedDate);
                 },
@@ -160,5 +167,22 @@ public class Mahasiswa extends AppCompatActivity {
         );
 
         datePickerDialog.show();
+    }
+
+    private String getSelectedGender() {
+        int selectedId = etGender.getCheckedRadioButtonId();
+        if (selectedId != -1) {
+            RadioButton selectedRadioButton = findViewById(selectedId);
+            return selectedRadioButton.getText().toString();
+        }
+        return "";
+    }
+
+    private void setGenderSelection(String gender) {
+        if (gender.equals("Laki-laki")) {
+            etGender.check(R.id.rbMale);
+        } else if (gender.equals("Perempuan")) {
+            etGender.check(R.id.rbFemale);
+        }
     }
 }

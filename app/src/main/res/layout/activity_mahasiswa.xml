@@ -142,18 +142,29 @@
         android:layout_alignBottom="@id/vGender"
         />
 
-    <EditText
+    <RadioGroup
         android:id="@+id/etGender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="text"
-        android:hint="None"
-        android:inputType="text"
-        android:padding="16dp"
-        android:textSize="18sp"
-        tools:ignore="VisualLintTextFieldSize"
+        android:orientation="horizontal"
         android:layout_below="@id/tvGender"
-        />
+        android:padding="16dp">
+
+        <RadioButton
+            android:id="@+id/rbMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laki-laki"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/rbFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Perempuan"
+            android:textSize="18sp" />
+
+    </RadioGroup>
 
     <ImageView
         android:id="@+id/vAddress"
