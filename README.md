@@ -70,7 +70,7 @@ SDK 34
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/6.jpg" alt="Screenshot Proyek" width="150">
 
 <p>Berikut adalah tampilan Input Data Mahasiswa:</p>
-<img src="https://github.com/n4days/SIMKampus/blob/master/data/7.jpg" alt="Screenshot Proyek" width="150">
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/15.jpg" alt="Screenshot Proyek" width="150">
 
 <p>Berikut adalah tampilan Data Mahasiswa setelah diinput Data Mahasiswa:</p>
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/8.jpg" alt="Screenshot Proyek" width="150">
@@ -82,7 +82,7 @@ SDK 34
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/10.jpg" alt="Screenshot Proyek" width="150">
 
 <p>Berikut adalah tampilan Edit Data Mahasiswa:</p>
-<img src="https://github.com/n4days/SIMKampus/blob/master/data/11.jpg" alt="Screenshot Proyek" width="150">
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/17.jpg" alt="Screenshot Proyek" width="150">
 
 <p>Berikut adalah tampilan Data Mahasiswa setelah diedit Data Mahasiswa:</p>
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/12.jpg" alt="Screenshot Proyek" width="150">
