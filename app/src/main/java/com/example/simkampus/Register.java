@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,20 +31,24 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 String email = etRegEmail.getText().toString();
                 String password = etRegPassword.getText().toString();
-                Boolean checkEmail = db.checkEmail(email);
-                if (checkEmail == false) {
-                    Boolean insert = db.insert(email, password);
-                    if (insert == true) {
-                        Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
+                if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    Boolean checkEmail = db.checkEmail(email);
+                    if (checkEmail == false) {
+                        Boolean insert = db.insert(email, password);
+                        if (insert == true) {
+                            Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Register.this, Login.class);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Registration Failed", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Email Already Exists", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Register.this, Login.class);
                         startActivity(intent);
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Registration Failed", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Email Already Exists", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Register.this, Login.class);
-                    startActivity(intent);
+                    etRegEmail.setError("Invalid email address");
                 }
             }
         });
