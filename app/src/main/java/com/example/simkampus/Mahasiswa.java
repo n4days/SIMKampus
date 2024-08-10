@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -23,6 +24,8 @@ public class Mahasiswa extends AppCompatActivity {
     private EditText etNomor, etName, etDate, etGender, etAddress;
     private Button btnSave;
 
+    private TextView tvTitleScreen;
+
     private DatabaseHelper dbHelper;
     private InfoMahasiswa infoMahasiswa;
     private boolean isEdit = false;
@@ -32,6 +35,7 @@ public class Mahasiswa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mahasiswa);
 
+        tvTitleScreen = findViewById(R.id.tvTitleScreen);
         etNomor = findViewById(R.id.etNomor);
         etName = findViewById(R.id.etName);
         etDate = findViewById(R.id.etDate);
@@ -46,6 +50,7 @@ public class Mahasiswa extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (getIntent().hasExtra("view_data_id")) {
+            tvTitleScreen.setText("Lihat Data");
             btnSave.setVisibility(View.GONE);
             int id = getIntent().getIntExtra("view_data_id", -1);
             infoMahasiswa = dbHelper.getData(id);
@@ -65,6 +70,7 @@ public class Mahasiswa extends AppCompatActivity {
         }
 
         if (getIntent().hasExtra("data_id")) {
+            tvTitleScreen.setText("Edit Data");
             btnSave.setText("Edit");
             int id = getIntent().getIntExtra("data_id", -1);
             infoMahasiswa = dbHelper.getData(id);
