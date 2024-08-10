@@ -55,6 +55,12 @@ public class Mahasiswa extends AppCompatActivity {
                 etDate.setText(infoMahasiswa.getDOB());
                 etGender.setText(infoMahasiswa.getGENDER());
                 etAddress.setText(infoMahasiswa.getADDRESS());
+
+                etNomor.setEnabled(false);
+                etName.setEnabled(false);
+                etDate.setEnabled(false);
+                etGender.setEnabled(false);
+                etAddress.setEnabled(false);
             }
         }
 
