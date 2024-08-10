@@ -65,15 +65,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public long addData(InfoMahasiswa data) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_NIM, data.getNIM());
-        values.put(COLUMN_NAME, data.getNAMA());
-        values.put(COLUMN_DOB, data.getDOB());
-        values.put(COLUMN_GENDER, data.getGENDER());
-        values.put(COLUMN_ADDRESS, data.getADDRESS());
-        long id = db.insert(TABLE_NAME_2, null, values);
-        db.close();
-        return id;
+
+        String query = "SELECT 1 FROM " + TABLE_NAME_2 + " WHERE " + COLUMN_NIM + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{data.getNIM()});
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+
+        if (exists) {
+            db.close();
+            return -1;
+        } else {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_NIM, data.getNIM());
+            values.put(COLUMN_NAME, data.getNAMA());
+            values.put(COLUMN_DOB, data.getDOB());
+            values.put(COLUMN_GENDER, data.getGENDER());
+            values.put(COLUMN_ADDRESS, data.getADDRESS());
+            long id = db.insert(TABLE_NAME_2, null, values);
+            db.close();
+            return id;
+        }
     }
 
     public InfoMahasiswa getData(long ID) {

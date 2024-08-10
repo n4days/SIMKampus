@@ -102,7 +102,16 @@ public class Mahasiswa extends AppCompatActivity {
                     infoMahasiswa.setDOB(date);
                     infoMahasiswa.setGENDER(gender);
                     infoMahasiswa.setADDRESS(address);
-                    dbHelper.updateNote(infoMahasiswa);
+
+                    int result = dbHelper.updateNote(infoMahasiswa);
+
+                    if (result == 0) {
+                        Toast.makeText(Mahasiswa.this, "Update failed. No record found with the specified ID.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Mahasiswa.this, "Data successfully updated.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Mahasiswa.this, DataMahasiswa.class);
+                        startActivity(intent);
+                    }
                 } else {
                     infoMahasiswa = new InfoMahasiswa();
                     infoMahasiswa.setNIM(nim);
@@ -110,10 +119,17 @@ public class Mahasiswa extends AppCompatActivity {
                     infoMahasiswa.setDOB(date);
                     infoMahasiswa.setGENDER(gender);
                     infoMahasiswa.setADDRESS(address);
-                    dbHelper.addData(infoMahasiswa);
+
+                    long result = dbHelper.addData(infoMahasiswa);
+
+                    if (result == -1) {
+                        Toast.makeText(Mahasiswa.this, "NIM already exists. Data not inserted.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(Mahasiswa.this, "Data successfully inserted.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Mahasiswa.this, DataMahasiswa.class);
+                        startActivity(intent);
+                    }
                 }
-                Intent intent = new Intent(Mahasiswa.this, DataMahasiswa.class);
-                startActivity(intent);
             }
         });
     }
