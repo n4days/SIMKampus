@@ -87,6 +87,9 @@ SDK 34
 <p>Berikut adalah tampilan Data Mahasiswa setelah diedit Data Mahasiswa:</p>
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/12.jpg" alt="Screenshot Proyek" width="150">
 
+<p>Berikut adalah tampilan Lihat Data Mahasisw:</p>
+<img src="https://github.com/n4days/SIMKampus/blob/master/data/16.jpg" alt="Screenshot Proyek" width="150">
+
 <p>Berikut adalah tampilan Data Mahasiswa setelah dihapus Data Mahasiswa:</p>
 <img src="https://github.com/n4days/SIMKampus/blob/master/data/13.jpg" alt="Screenshot Proyek" width="150">
 
