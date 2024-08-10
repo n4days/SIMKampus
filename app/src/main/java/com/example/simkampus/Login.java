@@ -31,7 +31,10 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
-                Boolean checkEmailPassword = db.checkEmailPassword(email, password);
+
+                String hashedPassword = Utils.hashMD5(password);
+
+                Boolean checkEmailPassword = db.checkEmailPassword(email, hashedPassword);
                 if (checkEmailPassword) {
                     Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, loadingScreen.class);

@@ -34,7 +34,9 @@ public class Register extends AppCompatActivity {
                 if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     Boolean checkEmail = db.checkEmail(email);
                     if (checkEmail == false) {
-                        Boolean insert = db.insert(email, password);
+                        String hashedPassword = Utils.hashMD5(password);
+
+                        Boolean insert = db.insert(email, hashedPassword);
                         if (insert == true) {
                             Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Register.this, Login.class);
@@ -52,6 +54,5 @@ public class Register extends AppCompatActivity {
                 }
             }
         });
-
     }
 }
