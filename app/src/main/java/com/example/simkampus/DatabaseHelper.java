@@ -14,8 +14,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "User.db";
     public static final String TABLE_NAME = "user_table";
     public static final String COL_1 = "ID";
-    public static final String COL_2 = "EMAIL";
-    public static final String COL_3 = "PASSWORD";
+    public static final String COL_2 = "USERNAME";
+    public static final String COL_3 = "FULLNAME";
+    public static final String COL_4 = "EMAIL";
+    public static final String COL_5 = "PASSWORD";
 
     private static final String TABLE_NAME_2 = "mahasiswa_table";
     private static final String COLUMN_ID = "ID";
@@ -26,11 +28,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ADDRESS = "ADDRESS";
 
     public DatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 2);
+        super(context, DATABASE_NAME, null, 3);
     }
 
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, EMAIL TEXT, PASSWORD TEXT)");
+        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, USERNAME TEXT, FULLNAME TEXT, EMAIL TEXT, PASSWORD TEXT)");
         db.execSQL("create table " + TABLE_NAME_2 + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NIM TEXT, NAMA TEXT, DOB TEXT, GENDER TEXT, ADDRESS TEXT)");
     }
 
@@ -40,11 +42,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insert(String email, String password) {
+    public boolean insert(String username, String fullname, String email, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2, email);
-        contentValues.put(COL_3, password);
+        contentValues.put(COL_2, username);
+        contentValues.put(COL_3, fullname);
+        contentValues.put(COL_4, email);
+        contentValues.put(COL_5, password);
         long result = db.insert(TABLE_NAME, null, contentValues);
         return result != -1;
     }

@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
 
-    EditText etRegEmail, etRegPassword;
+    EditText etUsername, etFullname, etRegEmail, etRegPassword;
     Button btnRegRegister;
     DatabaseHelper db;
 
@@ -21,6 +21,8 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        etUsername = findViewById(R.id.etUsername);
+        etFullname = findViewById(R.id.etFullname);
         etRegEmail = findViewById(R.id.etRegEmail);
         etRegPassword = findViewById(R.id.etRegPassword);
         btnRegRegister = findViewById(R.id.btnRegRegister);
@@ -29,6 +31,8 @@ public class Register extends AppCompatActivity {
         btnRegRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String username = etUsername.getText().toString();
+                String fullname = etFullname.getText().toString();
                 String email = etRegEmail.getText().toString();
                 String password = etRegPassword.getText().toString();
                 if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -36,7 +40,7 @@ public class Register extends AppCompatActivity {
                     if (checkEmail == false) {
                         String hashedPassword = Utils.hashMD5(password);
 
-                        Boolean insert = db.insert(email, hashedPassword);
+                        Boolean insert = db.insert(username, fullname, email, hashedPassword);
                         if (insert == true) {
                             Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Register.this, Login.class);
