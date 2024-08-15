@@ -3,6 +3,7 @@ package com.example.simkampus;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 public class aboutMe extends AppCompatActivity {
@@ -25,5 +26,8 @@ public class aboutMe extends AppCompatActivity {
 
     public void onBackPressed() {
         super.onBackPressed();
+        Intent intent = new Intent(aboutMe.this, Dashboard.class);
+        startActivity(intent);
+        finish();
     }
 }

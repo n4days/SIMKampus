@@ -149,6 +149,9 @@ public class Mahasiswa extends AppCompatActivity {
 
     public void onBackPressed() {
         super.onBackPressed();
+        Intent intent = new Intent(Mahasiswa.this, DataMahasiswa.class);
+        startActivity(intent);
+        finish();
     }
 
     private void showDatePickerDialog() {

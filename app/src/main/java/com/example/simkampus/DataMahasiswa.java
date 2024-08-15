@@ -123,6 +123,9 @@ public class DataMahasiswa extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Intent intent = new Intent(DataMahasiswa.this, Dashboard.class);
+        startActivity(intent);
+        finish();
     }
 
     protected void onResume() {
